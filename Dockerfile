@@ -8,8 +8,8 @@ ARG STEAMAPPID=600760
 RUN pwd
 
 RUN mkdir -p "${DATA_DIR}"
-RUN $STEAMCMD +login anonymous +force_install_dir "$DATA_DIR" +app_update "$STEAMAPPID" +quit
-RUN chown -R steam:steam "${DATA_DIR}"
+RUN su steam -c "${STEAMCMD} +login anonymous +force_install_dir ${DATA_DIR} +app_update ${STEAMAPPID} +quit"
+#RUN chown -R steam:steam "${DATA_DIR}"
 
 VOLUME [ "$DATA_DIR" ]
 
