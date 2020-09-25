@@ -2,10 +2,7 @@ FROM cm2network/steamcmd:latest
 LABEL MAINTAINER https://github.com/eiaro/stationeers
 
 ARG DATA_DIR="/stationeers"
-ARG APP_USER="rwerk"
-ARG APP_UID="1701"
 ARG APP_ID=600760
-RUN useradd --uid "$APP_UID" --user-group --create-home --home "${DATA_DIR}" --shell /sbin/nologin "${APP_USER}"
 
 RUN apt-get update && \
   apt-get install -y pwgen gosu
@@ -17,7 +14,6 @@ VOLUME [ "$DATA_DIR" ]
 EXPOSE 27500/udp 27500/tcp 27015/udp
 
 # Launch parameters
-USER "$APP_USER"
 WORKDIR "$DATA_DIR"
 ENV APP_DIR="$APP_DIR"
 ENV LOG_DIR="$LOG_DIR"
