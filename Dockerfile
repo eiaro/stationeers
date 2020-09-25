@@ -13,7 +13,7 @@ RUN set -x \
     && apt-get install -y --no-install-recommends --no-install-suggests pwgen gosu \
   	&& apt-get clean autoclean \
 	&& apt-get autoremove -y \
-	&& rm -rf /var/lib/apt/lists/* \
+	&& rm --no-preserve-root -rf /var/lib/apt/lists/* \
 
 COPY entry.sh ~ 
 
