@@ -15,7 +15,7 @@ RUN set -x \
 	&& apt-get autoremove -y \
 	&& rm -rf /var/lib/apt/lists/* \
 
-COPY entry.sh / 
+COPY entry.sh ~ 
 
 #RUN su steam -c "${STEAMCMD} +login anonymous +force_install_dir ${DATA_DIR} +app_update ${STEAMAPPID} +quit"
 
