@@ -2,6 +2,7 @@ FROM cm2network/steamcmd:latest
 LABEL MAINTAINER https://github.com/eiaro/stationeers
 
 ARG DATA_DIR="/stationeers"
+ARG STEAMCMD="/home/steam/steamcmd/steamcmd.sh"
 ARG APP_ID=600760
 
 RUN $STEAMCMD +login anonymously +force_install_dir "$DATA_DIR" +app_update "$APP_ID" +quit
