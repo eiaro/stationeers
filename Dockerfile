@@ -1,15 +1,16 @@
-FROM cm2network/steamcmd:latest
+FROM cm2network/steamcmd:root
 LABEL MAINTAINER https://github.com/eiaro/stationeers
 
 ARG DATA_DIR="/stationeers"
-ARG STEAMCMD="/home/steam/steamcmd/steamcmd.sh"
-ARG APP_ID=600760
+ARG STEAMCMD="{$STEAMCMDDIR}/steamcmd.sh"
+ARG STEAMAPPID=600760
 
 RUN pwd
 
 RUN mkdir -p "${DATA_DIR}"
+RUN chown -R steam:steam "${DATA_DIR}"
 
-RUN $STEAMCMD +login anonymous +force_install_dir "$DATA_DIR" +app_update "$APP_ID" +quit
+RUN $STEAMCMD +login anonymous +force_install_dir "$DATA_DIR" +app_update "$STEAMAPPID" +quit
 
 VOLUME [ "$DATA_DIR" ]
 
