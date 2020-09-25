@@ -5,6 +5,8 @@ ARG DATA_DIR="/stationeers"
 ARG STEAMCMD="/home/steam/steamcmd/steamcmd.sh"
 ARG APP_ID=600760
 
+RUN mkdir -p "${DATA_DIR}"
+
 RUN $STEAMCMD +login anonymous +force_install_dir "$DATA_DIR" +app_update "$APP_ID" +quit
 
 VOLUME [ "$DATA_DIR" ]
