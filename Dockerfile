@@ -4,9 +4,6 @@ LABEL MAINTAINER https://github.com/eiaro/stationeers
 ARG DATA_DIR="/stationeers"
 ARG APP_ID=600760
 
-RUN apt-get update && \
-  apt-get install -y pwgen gosu
-
 RUN $STEAMCMD +login anonymously +force_install_dir "$DATA_DIR" +app_update "$APP_ID" +quit
 
 VOLUME [ "$DATA_DIR" ]
