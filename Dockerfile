@@ -5,11 +5,19 @@ ARG DATA_DIR="/stationeers"
 ARG STEAMCMD="$STEAMCMDDIR/steamcmd.sh"
 ARG STEAMAPPID=600760
 
-RUN pwd
-
 RUN mkdir -p "${DATA_DIR}"
 RUN chown -R steam:steam "${DATA_DIR}"
-RUN su steam -c "${STEAMCMD} +login anonymous +force_install_dir ${DATA_DIR} +app_update ${STEAMAPPID} +quit"
+
+RUN set -x \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends --no-install-suggests pwgen gosu \
+  	&& apt-get clean autoclean \
+	&& apt-get autoremove -y \
+	&& rm -rf /var/lib/apt/lists/* \
+
+COPY entry.sh / 
+
+#RUN su steam -c "${STEAMCMD} +login anonymous +force_install_dir ${DATA_DIR} +app_update ${STEAMAPPID} +quit"
 
 
 VOLUME [ "$DATA_DIR" ]
@@ -26,15 +34,17 @@ ENV SAVE_INTERVAL="300"
 ENV CLEAR_INTERVAL="60"
 ENV WORLD_TYPE="Moon"
 ENV WORLD_NAME="Base"
-ENTRYPOINT exec "$APP_DIR/rocketstation_DedicatedServer.x86_64" \
-    -batchmode \
-    -nographics \
-    -autostart \
-    -basedirectory="$DATA_DIR" \
-#    -logfile="$LOG_DIR/game.log" \
-    -autosaveinterval="$SAVE_INTERVAL" \
-    -clearallinterval="$CLEAR_INTERVAL" \
-    -worldtype="$WORLD_TYPE" \
-    -worldname="$WORLD_NAME" \
-    -loadworld="$WORLD_NAME" 
 
+CMD ["bash", "entry.sh"]
+
+#ENTRYPOINT exec "$APP_DIR/rocketstation_DedicatedServer.x86_64" \
+#    -batchmode \
+#    -nographics \
+#    -autostart \
+#    -basedirectory="$DATA_DIR" \
+#    -logfile="$LOG_DIR/game.log" \
+#    -autosaveinterval="$SAVE_INTERVAL" \
+#    -clearallinterval="$CLEAR_INTERVAL" \
+#    -worldtype="$WORLD_TYPE" \
+#    -worldname="$WORLD_NAME" \
+#    -loadworld="$WORLD_NAME" 
