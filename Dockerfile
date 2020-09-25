@@ -2,21 +2,21 @@ FROM cm2network/steamcmd:root
 LABEL MAINTAINER https://github.com/eiaro/stationeers
 
 ARG DATA_DIR="/stationeers"
-ARG STEAMCMD="{$STEAMCMDDIR}/steamcmd.sh"
+ARG STEAMCMD="$STEAMCMDDIR/steamcmd.sh"
 ARG STEAMAPPID=600760
 
 RUN pwd
 
 RUN mkdir -p "${DATA_DIR}"
-RUN chown -R steam:steam "${DATA_DIR}"
-
 RUN $STEAMCMD +login anonymous +force_install_dir "$DATA_DIR" +app_update "$STEAMAPPID" +quit
+RUN chown -R steam:steam "${DATA_DIR}"
 
 VOLUME [ "$DATA_DIR" ]
 
 EXPOSE 27500/udp 27500/tcp 27015/udp
 
 # Launch parameters
+USER steam
 WORKDIR "$DATA_DIR"
 ENV APP_DIR="$APP_DIR"
 ENV LOG_DIR="$LOG_DIR"
