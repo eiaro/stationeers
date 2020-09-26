@@ -26,7 +26,7 @@ EXPOSE 27500/udp 27500/tcp 27015/udp
 
 # Launch parameters
 USER steam
-WORKDIR "$DATA_DIR"
+
 ENV APP_DIR="$APP_DIR"
 ENV LOG_DIR="$LOG_DIR"
 ENV DATA_DIR="$DATA_DIR"
