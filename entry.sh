@@ -3,6 +3,8 @@
 echo "DATA_DIR=${DATA_DIR}"
 echo "USER=${USER}"
 
+bash
+
 bash "${STEAMCMD}" +login anonymous \
 				+force_install_dir "${DATA_DIR}" \
 				+app_update "${STEAMAPPID}" \
