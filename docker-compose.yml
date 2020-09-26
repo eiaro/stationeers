@@ -1,0 +1,13 @@
+version: '2'
+services:
+  stationeers:
+    container_name: stationeers
+    image: stationeers:0.1
+    restart: on-failure
+    stop_grace_period: 1m
+    ports:
+      - "27500:27500/tcp"
+      - "27500:27500/udp"
+      - "27015:27015/udp"
+    volumes:
+      - /srv/s:/stationeers
