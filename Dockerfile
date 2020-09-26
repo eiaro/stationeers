@@ -6,7 +6,7 @@ ENV STEAMCMD="${STEAMCMDDIR}/steamcmd.sh"
 ENV STEAMAPPID=600760
 
 RUN mkdir -p "${DATA_DIR}"
-RUN chown -R steam:steam "${DATA_DIR}"
+RUN chown -R "${USER}:${USER}" "${DATA_DIR}"
 
 RUN set -x \
     && apt-get update \

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bash "${STEAMCMDDIR}/steamcmd.sh" +login anonymous \
+bash "${STEAMCMD}" +login anonymous \
 				+force_install_dir "${DATA_DIR}" \
 				+app_update "${STEAMAPPID}" \
 				+quit
