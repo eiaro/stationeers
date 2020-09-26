@@ -15,7 +15,7 @@ RUN set -x \
 	&& apt-get autoremove -y \
 	&& rm --no-preserve-root -rf /var/lib/apt/lists/* 
 
-COPY entry.sh ~ 
+COPY entry.sh /
 
 #RUN su steam -c "${STEAMCMD} +login anonymous +force_install_dir ${DATA_DIR} +app_update ${STEAMAPPID} +quit"
 
@@ -35,7 +35,7 @@ ENV CLEAR_INTERVAL="60"
 ENV WORLD_TYPE="Moon"
 ENV WORLD_NAME="Base"
 
-CMD ["bash", "entry.sh"]
+CMD ["bash", "/entry.sh"]
 
 #ENTRYPOINT exec "$APP_DIR/rocketstation_DedicatedServer.x86_64" \
 #    -batchmode \
