@@ -27,15 +27,28 @@ EXPOSE 27500/udp 27500/tcp 27015/udp
 # Launch parameters
 USER steam
 
-ENV APP_DIR="$APP_DIR"
-ENV LOG_DIR="$LOG_DIR"
-ENV DATA_DIR="$DATA_DIR"
-ENV SAVE_INTERVAL="300"
-ENV CLEAR_INTERVAL="60"
-ENV WORLD_TYPE="Moon"
-ENV WORLD_NAME="Base"
+ENV APP_DIR="$APP_DIR" \
+    LOG_DIR="$LOG_DIR" \
+    DATA_DIR="$DATA_DIR" \
+    SAVE_INTERVAL="300" \
+    CLEAR_INTERVAL="60" \ 
+    WORLD_TYPE="Moon" \
+    WORLD_NAME="Base"
+
+ENV SERVERNAME="Stationeers" \
+    GAMEPORT="27500" \
+    UPDATERPORT="27015" \
+    PASSWORD="" \
+    ADMINPASSWORD="AdminPass" \
+    MAPNAME="Moon" \
+    DESCRIPTION="Stationeers" \
+    MAXPLAYER="10" \
+    RCONPASSWORD="Stationeers"
 
 CMD ["bash", "/entry.sh"]
+
+
+
 
 #ENTRYPOINT exec "$APP_DIR/rocketstation_DedicatedServer.x86_64" \
 #    -batchmode \

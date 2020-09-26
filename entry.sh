@@ -14,10 +14,7 @@ bash "${STEAMCMD}" +login anonymous \
 if [ ! -f "${DATA_DIR}/default.ini" ]; then
     cp "${DATA_DIR}/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini" ${DATA_DIR}
 
-    if [ -z ${RCONPASSWORD} ]; then
-        sed -i s/RCONPASSWORD=stationeers/RCONPASSWORD=$(pwgen 15 1)/g ${DATA_DIR}/default.ini
-    else
-        sed -i s/RCONPASSWORD=stationeers/RCONPASSWORD=${RCONPASSWORD}/g ${DATA_DIR}/default.ini
-    fi 
+    sed -i s/RCONPASSWORD=stationeers/RCONPASSWORD=${RCONPASSWORD}/g ${DATA_DIR}/default.ini
+     
 fi
 
