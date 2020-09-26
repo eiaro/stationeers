@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+echo "DATA_DIR=${DATA_DIR}"
 
 bash "${STEAMCMD}" +login anonymous \
 				+force_install_dir "${DATA_DIR}" \
