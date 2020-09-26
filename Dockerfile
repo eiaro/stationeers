@@ -35,15 +35,15 @@ ENV APP_DIR="$APP_DIR" \
     WORLD_TYPE="Moon" \
     WORLD_NAME="Base"
 
-ENV SERVERNAME="Stationeers" \
-    GAMEPORT="27500" \
-    UPDATERPORT="27015" \
-    PASSWORD="" \
-    ADMINPASSWORD="AdminPass" \
-    MAPNAME="Moon" \
-    DESCRIPTION="Stationeers" \
-    MAXPLAYER="10" \
-    RCONPASSWORD="Stationeers"
+ENV SERVERNAME=Stationeers \
+    GAMEPORT=27500 \
+    UPDATERPORT=27015 \
+    PASSWORD= \
+    ADMINPASSWORD=AdminPass \
+    MAPNAME=Moon \
+    DESCRIPTION=Stationeers \
+    MAXPLAYER=10 \
+    RCONPASSWORD=Stationeers
 
 CMD ["bash", "/entry.sh"]
 
