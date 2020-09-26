@@ -1,9 +1,9 @@
 FROM cm2network/steamcmd:root
 LABEL MAINTAINER https://github.com/eiaro/stationeers
 
-ARG DATA_DIR="/stationeers"
-ARG STEAMCMD="$STEAMCMDDIR/steamcmd.sh"
-ARG STEAMAPPID=600760
+ENV DATA_DIR="/stationeers"
+ENV STEAMCMD="${STEAMCMDDIR}/steamcmd.sh"
+ENV STEAMAPPID=600760
 
 RUN mkdir -p "${DATA_DIR}"
 RUN chown -R steam:steam "${DATA_DIR}"
